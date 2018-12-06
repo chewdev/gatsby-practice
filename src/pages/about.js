@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "gatsby";
 import Header from "../components/header";
+import Container from "../components/container";
 
 export default () => {
   return (
-    <div>
+    <Container>
       <Header text="About Page" />
       <p>This is a new page</p>
-      <Link to="/">Home</Link>
-    </div>
+    </Container>
   );
 };
