@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "gatsby";
 import Header from "../components/header";
+import Container from "../components/container";
 
 export default () => (
-  <div style={{ margin: "3rem auto", maxWidth: 600 }}>
+  <Container>
     <Header text="Welcome to my page!" />
     <h2>Where do you want to go?</h2>
     <blockquote>
@@ -25,7 +25,5 @@ export default () => (
         </em>
       </p>
     </blockquote>
-    <Link to="/about">About Us</Link>
-    <Link to="/contact">Contact Us</Link>
-  </div>
+  </Container>
 );
