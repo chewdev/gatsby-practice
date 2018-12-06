@@ -1,4 +1,4 @@
 import Typography from "typography";
-import boostrapTheme from "typography-theme-bootstrap";
-const typography = new Typography(boostrapTheme);
+import fairyGatesTheme from "typography-theme-fairy-gates";
+const typography = new Typography(fairyGatesTheme);
 export default typography;
