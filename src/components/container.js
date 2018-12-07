@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from "gatsby";
+import { css } from "@emotion/core";
+import { Link, graphql, StaticQuery } from "gatsby";
+
+import { rhythm } from "../utils/typography";
 import containerStyles from "./container.module.css";
 
 const ListLink = props => (
@@ -9,26 +12,52 @@ const ListLink = props => (
 );
 
 export default ({ children }) => (
-  <div className={containerStyles.container}>
-    <header style={{ marginBottom: "1.5rem" }}>
-      <Link to="/" style={{ textShadow: "none", backgroundImage: "none" }}>
-        <h3 style={{ display: "inline" }}>Site Title</h3>
-      </Link>
-      <ul style={{ listStyle: "none", float: "right" }}>
-        {[
-          { to: "/", children: "Home" },
-          { to: "/about/", children: "About" },
-          { to: "/contact/", children: "Contact" }
-        ].map(obj => (
-          <ListLink to={obj.to}>{obj.children}</ListLink>
-        ))}
-      </ul>
-    </header>
-    {children}
-    <footer style={{ marginTop: "1.5rem", backgroundColor: "#1ca086" }}>
-      <p style={{ margin: "1rem 0", textAlign: "center" }}>
-        Why is this site so fast? It's built on Gatsby & developed by CE
-      </p>
-    </footer>
-  </div>
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `}
+    render={data => (
+      <div
+        className={containerStyles.container}
+        css={css`
+          margin: 0 auto;
+          max-width: 700px;
+          padding: ${rhythm(2)};
+          padding-top: ${rhythm(1.5)};
+          background: #f5f5f5;
+        `}
+      >
+        <header style={{ marginBottom: "1.5rem" }}>
+          <Link to="/" style={{ textShadow: "none", backgroundImage: "none" }}>
+            <h3 style={{ display: "inline" }}>
+              {data.site.siteMetadata.title}
+            </h3>
+          </Link>
+          <ul style={{ listStyle: "none", float: "right" }}>
+            {[
+              { to: "/", children: "Home" },
+              { to: "/about/", children: "About" },
+              { to: "/contact/", children: "Contact" }
+            ].map((obj, ind) => (
+              <ListLink key={ind} to={obj.to}>
+                {obj.children}
+              </ListLink>
+            ))}
+          </ul>
+        </header>
+        {children}
+        <footer style={{ marginTop: "1.5rem", backgroundColor: "#1ca086" }}>
+          <p style={{ margin: "1rem 0", textAlign: "center" }}>
+            Why is this site so fast? It's built on Gatsby & developed by CE
+          </p>
+        </footer>
+      </div>
+    )}
+  />
 );
