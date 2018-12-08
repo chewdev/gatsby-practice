@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "My Site Title!"
+    title: "The Resourceful Dev"
   },
   plugins: [
     {
@@ -11,12 +11,6 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography.js`
-      }
-    }
+    `gatsby-plugin-emotion`
   ]
 };
