@@ -28,8 +28,6 @@ export default ({ children }) => (
         css={css`
           margin: 0 auto;
           max-width: 700px;
-          padding: ${rhythm(2)};
-          padding-top: ${rhythm(1.5)};
           background: #f5f5f5;
         `}
       >
@@ -52,8 +50,13 @@ export default ({ children }) => (
           </ul>
         </header>
         {children}
-        <footer style={{ marginTop: "1.5rem", backgroundColor: "#1ca086" }}>
-          <p style={{ margin: "1rem 0", textAlign: "center" }}>
+        <footer
+          style={{
+            marginTop: "1.5rem",
+            backgroundColor: "#1ca086"
+          }}
+        >
+          <p style={{ textAlign: "center" }}>
             Why is this site so fast? It's built on Gatsby & developed by CE
           </p>
         </footer>
